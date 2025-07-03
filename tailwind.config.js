@@ -1,0 +1,135 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/**/*.{js,ts,jsx,tsx}',
+    './stories/**/*.{js,ts,jsx,tsx}',
+    './docs/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        // ShoreAgents Brand Colors
+        primary: {
+          50: '#f5fbe8',
+          100: '#e8f5c4',
+          200: '#d4ec8f',
+          300: '#bbde50',
+          400: '#a5d01e',
+          500: '#7EAC0B', // Primary Green
+          600: '#6b9009',
+          700: '#526f08',
+          800: '#42580b',
+          900: '#384a0e',
+          950: '#1c2704',
+        },
+        secondary: {
+          50: '#f6fced',
+          100: '#eaf6d8',
+          200: '#d6eeb6',
+          300: '#bce189',
+          400: '#a4d264',
+          500: '#97BC34', // Secondary Green
+          600: '#7a9a2b',
+          700: '#5f7825',
+          800: '#4f6023',
+          900: '#435222',
+          950: '#222d0f',
+        },
+        accent: {
+          50: '#fdffe6',
+          100: '#f9ffc9',
+          200: '#f2ff99',
+          300: '#e6ff5d',
+          400: '#d7ff2b',
+          500: '#C3DB63', // Accent Green
+          600: '#a6c04a',
+          700: '#8a9f3a',
+          800: '#707f30',
+          900: '#5f6b2a',
+          950: '#333b12',
+        },
+        gray: {
+          50: '#F5F5F5', // Accent Gray
+          100: '#f0f0f0',
+          200: '#e5e5e5',
+          300: '#d4d4d4',
+          400: '#a3a3a3',
+          500: '#737373',
+          600: '#525252',
+          700: '#404040',
+          800: '#262626',
+          900: '#171717',
+          950: '#0a0a0a',
+        },
+      },
+      fontFamily: {
+        sans: ['Montserrat', 'system-ui', 'sans-serif'],
+        body: ['Montserrat', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        'xs': ['0.75rem', { lineHeight: '1rem' }],
+        'sm': ['0.875rem', { lineHeight: '1.25rem' }],
+        'base': ['1rem', { lineHeight: '1.5rem' }],
+        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
+        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
+        '2xl': ['1.5rem', { lineHeight: '2rem' }],
+        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+        '5xl': ['3rem', { lineHeight: '1' }],
+        '6xl': ['3.75rem', { lineHeight: '1' }],
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '128': '32rem',
+      },
+      borderRadius: {
+        'none': '0',
+        'sm': '0.125rem',
+        DEFAULT: '0.25rem',
+        'md': '0.375rem',
+        'lg': '0.5rem',
+        'xl': '0.75rem',
+        '2xl': '1rem',
+        '3xl': '1.5rem',
+        'full': '9999px',
+      },
+      boxShadow: {
+        'sm': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+        DEFAULT: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+        'md': '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+        'lg': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+        'xl': '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+        '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+        'inner': 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
+        'none': 'none',
+      },
+      animation: {
+        'spin-slow': 'spin 2s linear infinite',
+        'pulse-slow': 'pulse 3s ease-in-out infinite',
+        'bounce-soft': 'bounce 2s ease-in-out infinite',
+      },
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding',
+      },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
+  safelist: [
+    // Ensure these classes are always included
+    'bg-primary-500',
+    'bg-secondary-500',
+    'bg-accent-500',
+    'text-primary-500',
+    'text-secondary-500',
+    'text-accent-500',
+    'border-primary-500',
+    'border-secondary-500',
+    'border-accent-500',
+  ],
+} 
