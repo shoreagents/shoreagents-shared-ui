@@ -199,6 +199,72 @@ export interface FormFieldProps extends BaseProps {
   required?: boolean;
 }
 
+// StatCard props
+export interface StatCardProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+  title: string;
+  value: string | number;
+  icon?: ReactNode;
+  variant?: 'default' | 'success' | 'error' | 'warning' | 'info';
+  size?: Size;
+}
+
+// StatusBadge props
+export interface StatusBadgeProps extends BaseProps, HTMLAttributes<HTMLSpanElement> {
+  status: 'online' | 'offline' | 'warning' | 'error' | 'pending' | 'success';
+  size?: Size;
+}
+
+// HealthIndicator props
+export interface HealthIndicatorProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+  status: 'good' | 'warning' | 'critical' | 'unknown';
+  size?: Size;
+  showIcon?: boolean;
+}
+
+// SearchInput props
+export interface SearchInputProps extends BaseProps, Omit<InputHTMLAttributes<HTMLInputElement>, 'className' | 'size'> {
+  size?: Size;
+  fullWidth?: boolean;
+  showClearButton?: boolean;
+  onClear?: () => void;
+}
+
+// FilterSelect props
+export interface FilterSelectOption {
+  value: string;
+  label: string;
+  disabled?: boolean;
+}
+
+export interface FilterSelectProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+  options: FilterSelectOption[];
+  value?: string;
+  onValueChange?: (value: string) => void;
+  placeholder?: string;
+  size?: Size;
+  disabled?: boolean;
+}
+
+// DataTable props
+export interface DataTableFilter {
+  key: string;
+  options: FilterSelectOption[];
+  placeholder?: string;
+}
+
+export interface DataTableProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+  data: any[];
+  columns: TableColumn[];
+  searchable?: boolean;
+  filterable?: boolean;
+  searchPlaceholder?: string;
+  filters?: DataTableFilter[];
+  loading?: boolean;
+  onSearch?: (value: string) => void;
+  onFilter?: (key: string, value: string) => void;
+  onSort?: (column: string, direction: 'asc' | 'desc') => void;
+}
+
 // Carousel props
 export interface CarouselImage {
   src: string;
@@ -287,7 +353,7 @@ export interface SwitchProps extends BaseProps {
 }
 
 // Table props
-export interface TableProps extends BaseProps {
+export interface TableProps extends BaseProps, HTMLAttributes<HTMLTableElement> {
   data: any[];
   columns: TableColumn[];
   loading?: boolean;
@@ -295,6 +361,9 @@ export interface TableProps extends BaseProps {
   selectable?: boolean;
   pagination?: boolean;
   pageSize?: number;
+  onSort?: (column: string, direction: 'asc' | 'desc') => void;
+  defaultSortColumn?: string;
+  defaultSortDirection?: 'asc' | 'desc';
 }
 
 export interface TableColumn {

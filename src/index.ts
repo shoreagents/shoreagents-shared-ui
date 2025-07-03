@@ -30,6 +30,16 @@ export * from './components/Carousel';
 // Layout Components
 export * from './components/Stack';
 
+// Dashboard Components
+export * from './components/StatCard';
+export * from './components/StatusBadge';
+export * from './components/HealthIndicator';
+export * from './components/SearchInput';
+export * from './components/Table';
+export * from './components/Accordion';
+export * from './components/FilterSelect';
+export * from './components/DataTable';
+
 // Utilities
 export * from './utils/cn';
 export * from './utils/variants';

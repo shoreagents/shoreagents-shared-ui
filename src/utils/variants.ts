@@ -185,6 +185,169 @@ export const alertVariants = cva(
   }
 );
 
+// StatCard variants
+export const statCardVariants = cva(
+  'bg-white border border-gray-200 rounded-lg shadow-sm',
+  {
+    variants: {
+      variant: {
+        default: 'border-gray-200',
+        success: 'border-green-200',
+        error: 'border-red-200',
+        warning: 'border-yellow-200',
+        info: 'border-blue-200',
+      },
+      size: {
+        sm: 'p-3',
+        md: 'p-4',
+        lg: 'p-6',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      size: 'md',
+    },
+  }
+);
+
+// StatusBadge variants
+export const statusBadgeVariants = cva(
+  'inline-flex items-center justify-center rounded-full font-medium',
+  {
+    variants: {
+      status: {
+        online: 'bg-green-100 text-green-800 border border-green-200',
+        offline: 'bg-red-100 text-red-800 border border-red-200',
+        warning: 'bg-yellow-100 text-yellow-800 border border-yellow-200',
+        error: 'bg-red-100 text-red-800 border border-red-200',
+        pending: 'bg-blue-100 text-blue-800 border border-blue-200',
+        success: 'bg-green-100 text-green-800 border border-green-200',
+      },
+      size: {
+        xs: 'px-2 py-0.5 text-xs',
+        sm: 'px-2.5 py-1 text-xs',
+        md: 'px-3 py-1.5 text-sm',
+        lg: 'px-4 py-2 text-sm',
+        xl: 'px-5 py-2.5 text-base',
+      },
+    },
+    defaultVariants: {
+      status: 'online',
+      size: 'sm',
+    },
+  }
+);
+
+// HealthIndicator variants
+export const healthIndicatorVariants = cva(
+  'inline-flex items-center font-medium',
+  {
+    variants: {
+      status: {
+        good: 'text-green-700',
+        warning: 'text-yellow-700',
+        critical: 'text-red-700',
+        unknown: 'text-gray-700',
+      },
+      size: {
+        xs: 'text-xs',
+        sm: 'text-sm',
+        md: 'text-base',
+        lg: 'text-lg',
+        xl: 'text-xl',
+      },
+    },
+    defaultVariants: {
+      status: 'good',
+      size: 'sm',
+    },
+  }
+);
+
+// SearchInput variants
+export const searchInputVariants = cva(
+  'relative',
+  {
+    variants: {
+      size: {
+        xs: 'text-xs',
+        sm: 'text-sm',
+        md: 'text-base',
+        lg: 'text-lg',
+        xl: 'text-xl',
+      },
+      fullWidth: {
+        true: 'w-full',
+        false: 'w-auto',
+      },
+    },
+    defaultVariants: {
+      size: 'md',
+      fullWidth: true,
+    },
+  }
+);
+
+// Table variants
+export const tableVariants = cva(
+  'overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg',
+  {
+    variants: {},
+    defaultVariants: {},
+  }
+);
+
+// Accordion variants
+export const accordionVariants = cva(
+  'space-y-1',
+  {
+    variants: {},
+    defaultVariants: {},
+  }
+);
+
+// AccordionItem variants
+export const accordionItemVariants = cva(
+  'border border-gray-200 rounded-lg',
+  {
+    variants: {
+      disabled: {
+        true: 'opacity-50',
+        false: '',
+      },
+    },
+    defaultVariants: {
+      disabled: false,
+    },
+  }
+);
+
+// FilterSelect variants
+export const filterSelectVariants = cva(
+  'relative',
+  {
+    variants: {
+      size: {
+        sm: 'text-xs',
+        md: 'text-sm',
+        lg: 'text-base',
+      },
+    },
+    defaultVariants: {
+      size: 'md',
+    },
+  }
+);
+
+// DataTable variants
+export const dataTableVariants = cva(
+  'w-full',
+  {
+    variants: {},
+    defaultVariants: {},
+  }
+);
+
 // Carousel variants
 export const carouselVariants = cva(
   'shore-carousel',
@@ -318,6 +481,15 @@ export type CardVariants = VariantProps<typeof cardVariants>;
 export type BadgeVariants = VariantProps<typeof badgeVariants>;
 export type AvatarVariants = VariantProps<typeof avatarVariants>;
 export type AlertVariants = VariantProps<typeof alertVariants>;
+export type StatCardVariants = VariantProps<typeof statCardVariants>;
+export type StatusBadgeVariants = VariantProps<typeof statusBadgeVariants>;
+export type HealthIndicatorVariants = VariantProps<typeof healthIndicatorVariants>;
+export type SearchInputVariants = VariantProps<typeof searchInputVariants>;
+export type TableVariants = VariantProps<typeof tableVariants>;
+export type AccordionVariants = VariantProps<typeof accordionVariants>;
+export type AccordionItemVariants = VariantProps<typeof accordionItemVariants>;
+export type FilterSelectVariants = VariantProps<typeof filterSelectVariants>;
+export type DataTableVariants = VariantProps<typeof dataTableVariants>;
 export type CarouselVariants = VariantProps<typeof carouselVariants>;
 export type LoadingVariants = VariantProps<typeof loadingVariants>;
 export type ProgressVariants = VariantProps<typeof progressVariants>;
