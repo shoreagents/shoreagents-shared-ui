@@ -1,3 +1,6 @@
+// Import styles automatically
+import './styles/globals.css';
+
 // Base Components
 export * from './components/Button';
 export * from './components/Card';
@@ -31,4 +34,4 @@ export * from './utils/variants';
 // Types
 export * from './types';
 
-// Note: Import styles in your app with: import 'shoreagents-shared-ui/dist/styles.css' 
+// Note: Styles are automatically imported when you import any component 

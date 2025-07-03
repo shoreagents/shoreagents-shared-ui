@@ -32,13 +32,7 @@ npm install react react-dom next tailwindcss
 
 ### Setup
 
-1. **Import the CSS styles** in your main CSS file or `_app.tsx`:
-
-```css
-@import 'shoreagents-shared-ui/dist/styles.css';
-```
-
-2. **Configure Tailwind CSS** to include the library's styles in your `tailwind.config.js`:
+1. **Configure Tailwind CSS** to include the library's styles in your `tailwind.config.js`:
 
 ```js
 module.exports = {
@@ -51,7 +45,7 @@ module.exports = {
 }
 ```
 
-3. **Start using components**:
+2. **Start using components** (styles are automatically imported):
 
 ```tsx
 import { Button, Card, Input } from 'shoreagents-shared-ui';
