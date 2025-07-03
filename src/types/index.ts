@@ -199,6 +199,30 @@ export interface FormFieldProps extends BaseProps {
   required?: boolean;
 }
 
+// Carousel props
+export interface CarouselImage {
+  src: string;
+  alt?: string;
+  caption?: string;
+  thumbnail?: string;
+}
+
+export interface CarouselProps extends BaseProps {
+  images: CarouselImage[];
+  currentIndex?: number;
+  onIndexChange?: (index: number) => void;
+  variant?: 'default' | 'contained' | 'full-width';
+  aspectRatio?: '1:1' | '4:3' | '3:2' | '16:9' | '21:9';
+  showArrows?: boolean;
+  showThumbnails?: boolean;
+  showDots?: boolean;
+  showPlayButton?: boolean;
+  autoPlay?: boolean;
+  autoPlayInterval?: number;
+  loop?: boolean;
+  thumbnailPosition?: 'top' | 'bottom';
+}
+
 // Select props
 export interface SelectProps extends BaseProps {
   options: SelectOption[];

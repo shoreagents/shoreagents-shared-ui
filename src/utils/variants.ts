@@ -185,6 +185,23 @@ export const alertVariants = cva(
   }
 );
 
+// Carousel variants
+export const carouselVariants = cva(
+  'shore-carousel',
+  {
+    variants: {
+      variant: {
+        default: 'w-full',
+        contained: 'max-w-4xl mx-auto',
+        'full-width': 'w-full max-w-none',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  }
+);
+
 // Loading variants
 export const loadingVariants = cva(
   'animate-spin',
@@ -301,6 +318,7 @@ export type CardVariants = VariantProps<typeof cardVariants>;
 export type BadgeVariants = VariantProps<typeof badgeVariants>;
 export type AvatarVariants = VariantProps<typeof avatarVariants>;
 export type AlertVariants = VariantProps<typeof alertVariants>;
+export type CarouselVariants = VariantProps<typeof carouselVariants>;
 export type LoadingVariants = VariantProps<typeof loadingVariants>;
 export type ProgressVariants = VariantProps<typeof progressVariants>;
 export type TypographyVariants = VariantProps<typeof typographyVariants>; 

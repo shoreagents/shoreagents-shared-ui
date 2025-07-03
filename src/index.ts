@@ -24,6 +24,9 @@ export * from './components/Tabs';
 export * from './components/Alert';
 export * from './components/Loading';
 
+// Media Components
+export * from './components/Carousel';
+
 // Layout Components
 export * from './components/Stack';
 

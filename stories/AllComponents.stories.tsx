@@ -37,6 +37,9 @@ import {
   Loading,
   Skeleton,
   
+  // Media Components
+  Carousel,
+  
   // Layout Components
   Stack,
   HStack,
@@ -88,6 +91,30 @@ const AllComponentsShowcase = () => {
     { label: 'Overview' },
   ];
 
+  // Sample images for carousel
+  const carouselImages = [
+    {
+      src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
+      alt: 'Mountain landscape',
+      caption: 'Beautiful mountain landscape at sunset',
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&h=600&fit=crop',
+      alt: 'Ocean view',
+      caption: 'Serene ocean view with clear blue waters',
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=600&fit=crop',
+      alt: 'City skyline',
+      caption: 'Modern city skyline at night',
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop',
+      alt: 'Forest path',
+      caption: 'Peaceful forest path in autumn',
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -111,7 +138,7 @@ const AllComponentsShowcase = () => {
         }
         actions={
           <HStack spacing="sm">
-            <Badge variant="success">v1.0.0</Badge>
+            <Badge variant="success">v1.2.0</Badge>
             <Button size="sm">Get Started</Button>
           </HStack>
         }
@@ -145,6 +172,7 @@ const AllComponentsShowcase = () => {
             <TabsTrigger value="forms">Forms</TabsTrigger>
             <TabsTrigger value="navigation">Navigation</TabsTrigger>
             <TabsTrigger value="feedback">Feedback</TabsTrigger>
+            <TabsTrigger value="media">Media</TabsTrigger>
             <TabsTrigger value="layout">Layout</TabsTrigger>
           </TabsList>
 
@@ -415,6 +443,64 @@ const AllComponentsShowcase = () => {
             </VStack>
           </TabsContent>
 
+          {/* Media Tab */}
+          <TabsContent value="media">
+            <VStack spacing="lg">
+              <Alert variant="info" title="Media Components">
+                Rich media components for displaying images, videos, and interactive content.
+              </Alert>
+
+              {/* Image Carousel */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>Image Carousel</CardTitle>
+                  <CardDescription>Feature-rich carousel with navigation, thumbnails, and autoplay</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <VStack spacing="lg">
+                    {/* Default Carousel */}
+                    <div>
+                      <h4 className="font-medium mb-3">Default Carousel</h4>
+                      <Carousel
+                        images={carouselImages.slice(0, 3)}
+                        aspectRatio="16:9"
+                      />
+                    </div>
+
+                    <Divider />
+
+                    {/* Carousel with Thumbnails */}
+                    <div>
+                      <h4 className="font-medium mb-3">With Thumbnails & Auto-play</h4>
+                      <Carousel
+                        images={carouselImages}
+                        aspectRatio="16:9"
+                        showThumbnails
+                        autoPlay
+                        showPlayButton
+                        autoPlayInterval={4000}
+                      />
+                    </div>
+
+                    <Divider />
+
+                    {/* Contained Carousel */}
+                    <div>
+                      <h4 className="font-medium mb-3">Contained Variant (Square)</h4>
+                      <Carousel
+                        images={carouselImages}
+                        variant="contained"
+                        aspectRatio="1:1"
+                        showThumbnails
+                        thumbnailPosition="bottom"
+                      />
+                    </div>
+                  </VStack>
+                </CardContent>
+              </Card>
+            </VStack>
+          </TabsContent>
+
           {/* Layout Tab */}
           <TabsContent value="layout">
             <VStack spacing="lg">
@@ -483,7 +569,7 @@ const AllComponentsShowcase = () => {
               Built with React, TypeScript, and Tailwind CSS
             </p>
             <HStack spacing="sm">
-              <Badge variant="primary" size="sm">20+ Components</Badge>
+              <Badge variant="primary" size="sm">21+ Components</Badge>
               <Badge variant="secondary" size="sm">Type Safe</Badge>
               <Badge variant="accent" size="sm">Accessible</Badge>
               <Badge variant="success" size="sm">Customizable</Badge>
