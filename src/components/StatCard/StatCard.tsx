@@ -48,10 +48,10 @@ export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(
           {icon && (
             <div className={cn(
               'flex-shrink-0 p-2 rounded-lg',
-              variant === 'success' && 'bg-green-100 text-green-600',
+              variant === 'success' && 'bg-primary-100 text-primary-600',
               variant === 'error' && 'bg-red-100 text-red-600',
               variant === 'warning' && 'bg-yellow-100 text-yellow-600',
-              variant === 'info' && 'bg-blue-100 text-blue-600',
+              variant === 'info' && 'bg-secondary-100 text-secondary-600',
               variant === 'default' && 'bg-gray-100 text-gray-600'
             )}>
               {icon}
@@ -63,10 +63,10 @@ export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(
             </p>
             <p className={cn(
               'text-2xl font-semibold truncate',
-              variant === 'success' && 'text-green-600',
-              variant === 'error' && 'text-red-600',
-              variant === 'warning' && 'text-yellow-600',
-              variant === 'info' && 'text-blue-600',
+              variant === 'success' && 'text-primary-700',
+              variant === 'error' && 'text-red-700',
+              variant === 'warning' && 'text-yellow-700',
+              variant === 'info' && 'text-secondary-700',
               variant === 'default' && 'text-gray-900'
             )}>
               {value}

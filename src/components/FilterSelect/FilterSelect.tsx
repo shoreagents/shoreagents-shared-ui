@@ -65,7 +65,7 @@ export const FilterSelect = forwardRef<HTMLDivElement, FilterSelectProps>(
           onClick={() => !disabled && setIsOpen(!isOpen)}
           disabled={disabled}
           className={cn(
-            'relative w-full cursor-pointer rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500',
+            'relative w-full cursor-pointer rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left text-sm shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 hover:border-gray-400 transition-colors',
             disabled && 'opacity-50 cursor-not-allowed',
             size === 'sm' && 'py-1.5 text-xs',
             size === 'md' && 'py-2 text-sm',
@@ -90,15 +90,15 @@ export const FilterSelect = forwardRef<HTMLDivElement, FilterSelectProps>(
                   onClick={() => handleSelect(option.value)}
                   disabled={option.disabled}
                   className={cn(
-                    'relative w-full cursor-pointer select-none py-2 pl-3 pr-9 text-left text-sm hover:bg-gray-50',
-                    option.disabled && 'opacity-50 cursor-not-allowed',
-                    currentValue === option.value && 'bg-blue-50 text-blue-900'
+                    'relative w-full cursor-pointer select-none py-2 pl-3 pr-9 text-left text-sm hover:bg-primary-50 transition-colors',
+                    option.disabled && 'opacity-50 cursor-not-allowed hover:bg-transparent',
+                    currentValue === option.value && 'bg-primary-50 text-primary-900'
                   )}
                 >
                   <span className="block truncate">{option.label}</span>
                   {currentValue === option.value && (
                     <span className="absolute inset-y-0 right-0 flex items-center pr-4">
-                      <Check className="h-4 w-4 text-blue-600" />
+                      <Check className="h-4 w-4 text-primary-600" />
                     </span>
                   )}
                 </button>

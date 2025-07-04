@@ -129,8 +129,8 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps & {
           onClick={handleToggle}
           disabled={disabled}
           className={cn(
-            'flex w-full items-center justify-between py-3 px-4 text-left text-sm font-medium transition-colors hover:bg-gray-50',
-            disabled && 'opacity-50 cursor-not-allowed'
+            'flex w-full items-center justify-between py-3 px-4 text-left text-sm font-medium transition-colors hover:bg-primary-50 focus:bg-primary-50 focus:outline-none',
+            disabled && 'opacity-50 cursor-not-allowed hover:bg-transparent'
           )}
         >
           <span>{title}</span>

@@ -187,20 +187,22 @@ export const alertVariants = cva(
 
 // StatCard variants
 export const statCardVariants = cva(
-  'bg-white border border-gray-200 rounded-lg shadow-sm',
+  'bg-white border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200',
   {
     variants: {
       variant: {
-        default: 'border-gray-200',
-        success: 'border-green-200',
-        error: 'border-red-200',
-        warning: 'border-yellow-200',
-        info: 'border-blue-200',
+        default: 'border-gray-200 hover:border-gray-300',
+        success: 'border-primary-200 hover:border-primary-300 bg-primary-50/50',
+        error: 'border-red-200 hover:border-red-300 bg-red-50/50',
+        warning: 'border-yellow-200 hover:border-yellow-300 bg-yellow-50/50',
+        info: 'border-secondary-200 hover:border-secondary-300 bg-secondary-50/50',
       },
       size: {
+        xs: 'p-2',
         sm: 'p-3',
         md: 'p-4',
         lg: 'p-6',
+        xl: 'p-8',
       },
     },
     defaultVariants: {
@@ -212,16 +214,16 @@ export const statCardVariants = cva(
 
 // StatusBadge variants
 export const statusBadgeVariants = cva(
-  'inline-flex items-center justify-center rounded-full font-medium',
+  'inline-flex items-center justify-center rounded-full font-medium border',
   {
     variants: {
       status: {
-        online: 'bg-green-100 text-green-800 border border-green-200',
-        offline: 'bg-red-100 text-red-800 border border-red-200',
-        warning: 'bg-yellow-100 text-yellow-800 border border-yellow-200',
-        error: 'bg-red-100 text-red-800 border border-red-200',
-        pending: 'bg-blue-100 text-blue-800 border border-blue-200',
-        success: 'bg-green-100 text-green-800 border border-green-200',
+        online: 'bg-primary-100 text-primary-800 border-primary-200 hover:bg-primary-200 transition-colors',
+        offline: 'bg-red-100 text-red-800 border-red-200 hover:bg-red-200 transition-colors',
+        warning: 'bg-yellow-100 text-yellow-800 border-yellow-200 hover:bg-yellow-200 transition-colors',
+        error: 'bg-red-100 text-red-800 border-red-200 hover:bg-red-200 transition-colors',
+        pending: 'bg-secondary-100 text-secondary-800 border-secondary-200 hover:bg-secondary-200 transition-colors',
+        success: 'bg-primary-100 text-primary-800 border-primary-200 hover:bg-primary-200 transition-colors',
       },
       size: {
         xs: 'px-2 py-0.5 text-xs',
@@ -240,14 +242,14 @@ export const statusBadgeVariants = cva(
 
 // HealthIndicator variants
 export const healthIndicatorVariants = cva(
-  'inline-flex items-center font-medium',
+  'inline-flex items-center font-medium gap-2',
   {
     variants: {
       status: {
-        good: 'text-green-700',
-        warning: 'text-yellow-700',
-        critical: 'text-red-700',
-        unknown: 'text-gray-700',
+        good: 'text-primary-700 hover:text-primary-800 transition-colors',
+        warning: 'text-yellow-700 hover:text-yellow-800 transition-colors',
+        critical: 'text-red-700 hover:text-red-800 transition-colors',
+        unknown: 'text-gray-700 hover:text-gray-800 transition-colors',
       },
       size: {
         xs: 'text-xs',
@@ -290,10 +292,18 @@ export const searchInputVariants = cva(
 
 // Table variants
 export const tableVariants = cva(
-  'overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg',
+  'overflow-hidden shadow-sm ring-1 ring-gray-200 md:rounded-lg bg-white',
   {
-    variants: {},
-    defaultVariants: {},
+    variants: {
+      variant: {
+        default: 'border border-gray-200',
+        bordered: 'border border-gray-300',
+        elevated: 'shadow-md ring-gray-100',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
   }
 );
 
@@ -308,11 +318,11 @@ export const accordionVariants = cva(
 
 // AccordionItem variants
 export const accordionItemVariants = cva(
-  'border border-gray-200 rounded-lg',
+  'border border-gray-200 rounded-lg bg-white hover:border-gray-300 transition-colors',
   {
     variants: {
       disabled: {
-        true: 'opacity-50',
+        true: 'opacity-50 hover:border-gray-200',
         false: '',
       },
     },
@@ -328,9 +338,11 @@ export const filterSelectVariants = cva(
   {
     variants: {
       size: {
+        xs: 'text-xs',
         sm: 'text-xs',
         md: 'text-sm',
         lg: 'text-base',
+        xl: 'text-lg',
       },
     },
     defaultVariants: {
