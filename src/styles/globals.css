@@ -1,67 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
+    /* ShoreAgents Brand Colors */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 80 15% 15%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 80 15% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --popover-foreground: 80 15% 15%;
+    
+    /* ShoreAgents Primary Green #7EAC0B */
+    --primary: 80 88% 36%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* ShoreAgents Secondary Green #97BC34 */
+    --secondary: 76 57% 47%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* ShoreAgents Muted (Light Gray) */
+    --muted: 0 0% 96%;
+    --muted-foreground: 80 10% 45%;
+    
+    /* ShoreAgents Accent Green - Now uses Secondary Green for better UX */
+    --accent: 76 57% 47%;  /* Secondary Green #97BC34 for interactive states */
+    --accent-foreground: 0 0% 100%;  /* White text for better contrast */
+    
+    /* Semantic Colors */
+    --destructive: 0 0% 100%;  /* White background */
+    --destructive-foreground: 0 84.2% 60.2%;  /* Red text */
+    --success: 80 88% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 45 93% 47%;
+    --warning-foreground: 0 0% 100%;
+    
+    /* Border & Input */
+    --border: 80 20% 88%;
+    --input: 80 20% 88%;
+    --ring: 80 88% 36%;
     --radius: 0.5rem;
+    
+    /* Chart Colors (ShoreAgents Green Palette) */
+    --chart-1: 80 88% 36%;  /* Primary Green */
+    --chart-2: 76 57% 47%;  /* Secondary Green */
+    --chart-3: 72 58% 62%;  /* Accent Green */
+    --chart-4: 45 93% 47%;  /* Complementary Orange */
+    --chart-5: 200 85% 45%; /* Complementary Blue */
+    
+    /* Breadcrumb Component Colors */
+    --breadcrumb-link-hover: var(--secondary);
+    --breadcrumb-active: var(--primary);
+    /* ShoreAgents Sidebar Colors */
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-foreground: 80 15% 15%;
+    --sidebar-primary: 80 88% 36%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 80 15% 15%;
+    --sidebar-border: 80 20% 88%;
+    --sidebar-ring: 80 88% 36%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* ShoreAgents Dark Mode */
+    --background: 80 15% 8%;
+    --foreground: 0 0% 95%;
+    --card: 80 15% 10%;
+    --card-foreground: 0 0% 95%;
+    --popover: 80 15% 10%;
+    --popover-foreground: 0 0% 95%;
+    
+    /* Lighter greens for dark mode visibility */
+    --primary: 80 75% 55%;
+    --primary-foreground: 80 15% 8%;
+    --secondary: 76 50% 60%;
+    --secondary-foreground: 80 15% 8%;
+    --accent: 76 50% 60%;  /* Secondary Green for dark mode */
+    --accent-foreground: 80 15% 8%;  /* Dark text on light green */
+    
+    --muted: 80 15% 15%;
+    --muted-foreground: 80 5% 65%;
+    --destructive: 0 0% 8%;  /* Dark background for dark mode */
+    --destructive-foreground: 0 84.2% 70%;  /* Light red text for dark mode */
+    --border: 80 15% 20%;
+    --input: 80 15% 20%;
+    --ring: 80 75% 55%;
+    
+    /* ShoreAgents Dark Sidebar */
+    --sidebar-background: 80 15% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 80 75% 55%;
+    --sidebar-primary-foreground: 80 15% 8%;
+    --sidebar-accent: 80 15% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 80 15% 20%;
+    --sidebar-ring: 80 75% 55%;
   }
 }
 
@@ -72,4 +109,51 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer components {
+  /* ShoreAgents Breadcrumb Styling - BEST PRACTICE */
+  nav[aria-label="breadcrumb"] a {
+    @apply transition-colors text-muted-foreground;
+  }
+  
+  /* Breadcrumb Link Hover - Uses CSS Variable */
+  nav[aria-label="breadcrumb"] a:hover {
+    color: hsl(var(--breadcrumb-link-hover));
+  }
+  
+  /* Breadcrumb Active/Current Page - Uses CSS Variable */
+  nav[aria-label="breadcrumb"] span[aria-current="page"] {
+    color: hsl(var(--breadcrumb-active));
+    font-weight: 600;
+  }
+  
+  /* 
+    ShoreAgents Menubar Styling - CLEAN APPROACH
+    
+    Instead of using !important overrides, we updated the --accent CSS variable
+    to use Secondary Green. This automatically styles all components that use
+    accent colors (like menubar hover/focus states) with the ShoreAgents theme.
+    
+    Components that automatically get themed:
+    - Menubar triggers (hover, focus, open states)
+    - Menu items (hover, focus states) 
+    - Any other component using bg-accent/text-accent-foreground
+    
+    This follows shadcn/ui best practices and maintains consistency.
+  */
+
+  /* ShoreAgents Destructive Button Styling - Clean Approach */
+  button.inline-flex[class*="bg-destructive"] {
+    border: 1px solid hsl(var(--destructive-foreground));
+    background-color: hsl(var(--destructive));
+    color: hsl(var(--destructive-foreground));
+  }
+  
+  button.inline-flex[class*="bg-destructive"]:hover {
+    background-color: hsl(var(--destructive-foreground));
+    color: hsl(var(--destructive));
+    border-color: hsl(var(--destructive-foreground));
+  }
+
 } 
