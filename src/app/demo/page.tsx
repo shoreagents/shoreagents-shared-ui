@@ -42,6 +42,7 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupConte
 import { Skeleton } from "@/components/ui/skeleton"
 import { Slider } from "@/components/ui/slider"
 import { Toaster } from "@/components/ui/sonner"
+import { toast } from "sonner"
 import { Switch } from "@/components/ui/switch"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -51,8 +52,8 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 // Icons
-import { AlertCircle, Bell, Calendar as CalendarIcon, ChevronDown, File, Home, Info, Laptop, Menu, Settings, User, X } from "lucide-react"
-import { Bar, BarChart, Line, LineChart, Pie, PieChart, Cell, ResponsiveContainer } from "recharts"
+import { AlertCircle, Bell, Calendar as CalendarIcon, ChevronsUpDown, File, Home, Info, Laptop, Menu, Settings, User, X } from "lucide-react"
+import { Bar, BarChart, Line, LineChart, Pie, PieChart, Cell, ResponsiveContainer, Area, AreaChart, XAxis, YAxis, CartesianGrid, Legend, Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts"
 
 export default function DemoPage() {
   const [date, setDate] = useState<Date | undefined>(new Date())
@@ -64,18 +65,55 @@ export default function DemoPage() {
 
   // Sample data
   const chartData = [
-    { month: "January", desktop: 186 },
-    { month: "February", desktop: 305 },
-    { month: "March", desktop: 237 },
-    { month: "April", desktop: 73 },
-    { month: "May", desktop: 209 },
-    { month: "June", desktop: 214 },
+    { month: "January", desktop: 186, mobile: 80 },
+    { month: "February", desktop: 305, mobile: 200 },
+    { month: "March", desktop: 237, mobile: 120 },
+    { month: "April", desktop: 73, mobile: 190 },
+    { month: "May", desktop: 209, mobile: 130 },
+    { month: "June", desktop: 214, mobile: 140 },
+  ]
+
+  const pieData = [
+    { name: "Desktop", value: 400, fill: "hsl(var(--chart-1))" },
+    { name: "Mobile", value: 300, fill: "hsl(var(--chart-2))" },
+    { name: "Tablet", value: 200, fill: "hsl(var(--chart-3))" },
+    { name: "Other", value: 100, fill: "hsl(var(--chart-4))" },
+  ]
+
+  const radarData = [
+    { subject: "Math", A: 120, B: 110, fullMark: 150 },
+    { subject: "Chinese", A: 98, B: 130, fullMark: 150 },
+    { subject: "English", A: 86, B: 130, fullMark: 150 },
+    { subject: "Geography", A: 99, B: 100, fullMark: 150 },
+    { subject: "Physics", A: 85, B: 90, fullMark: 150 },
+    { subject: "History", A: 65, B: 85, fullMark: 150 },
+  ]
+
+  const radialData = [
+    { name: "18-24", value: 31.47, fill: "hsl(var(--chart-1))" },
+    { name: "25-29", value: 26.69, fill: "hsl(var(--chart-2))" },
+    { name: "30-34", value: 15.69, fill: "hsl(var(--chart-3))" },
+    { name: "35-39", value: 8.22, fill: "hsl(var(--chart-4))" },
+    { name: "40-49", value: 8.63, fill: "hsl(var(--chart-5))" },
+    { name: "50+", value: 2.63, fill: "hsl(var(--chart-1))" },
   ]
 
   const chartConfig = {
     desktop: {
       label: "Desktop",
       color: "hsl(var(--chart-1))",
+    },
+    mobile: {
+      label: "Mobile",
+      color: "hsl(var(--chart-2))",
+    },
+    A: {
+      label: "Student A",
+      color: "hsl(var(--chart-1))",
+    },
+    B: {
+      label: "Student B",
+      color: "hsl(var(--chart-2))",
     },
   } satisfies ChartConfig
 
@@ -498,12 +536,80 @@ export default function DemoPage() {
             <div className="space-y-2">
               <h3 className="text-lg font-semibold">Aspect Ratio</h3>
               <p className="text-sm text-muted-foreground mb-4">Maintains aspect ratio for content</p>
-              <div className="max-w-sm">
-                <AspectRatio ratio={16 / 9} className="bg-muted">
-                  <div className="flex items-center justify-center h-full text-sm text-muted-foreground">
-                    16:9 Aspect Ratio
-                  </div>
-                </AspectRatio>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl">
+                {/* 16:9 - Widescreen */}
+                <div className="space-y-2">
+                  <p className="text-xs font-medium text-muted-foreground">16:9 (Widescreen)</p>
+                  <AspectRatio ratio={16 / 9} className="bg-muted border rounded-lg">
+                    <div className="flex items-center justify-center h-full text-sm text-muted-foreground">
+                      16:9 Widescreen
+                    </div>
+                  </AspectRatio>
+                </div>
+
+                {/* 1:1 - Square */}
+                <div className="space-y-2">
+                  <p className="text-xs font-medium text-muted-foreground">1:1 (Square)</p>
+                  <AspectRatio ratio={1} className="bg-muted border rounded-lg">
+                    <div className="flex items-center justify-center h-full text-sm text-muted-foreground">
+                      1:1 Square
+                    </div>
+                  </AspectRatio>
+                </div>
+
+                {/* 4:3 - Traditional */}
+                <div className="space-y-2">
+                  <p className="text-xs font-medium text-muted-foreground">4:3 (Traditional)</p>
+                  <AspectRatio ratio={4 / 3} className="bg-muted border rounded-lg">
+                    <div className="flex items-center justify-center h-full text-sm text-muted-foreground">
+                      4:3 Traditional
+                    </div>
+                  </AspectRatio>
+                </div>
+
+                {/* 3:4 - Portrait */}
+                <div className="space-y-2">
+                  <p className="text-xs font-medium text-muted-foreground">3:4 (Portrait)</p>
+                  <AspectRatio ratio={3 / 4} className="bg-muted border rounded-lg">
+                    <div className="flex items-center justify-center h-full text-sm text-muted-foreground">
+                      3:4 Portrait
+                    </div>
+                  </AspectRatio>
+                </div>
+
+                {/* 21:9 - Ultrawide */}
+                <div className="space-y-2">
+                  <p className="text-xs font-medium text-muted-foreground">21:9 (Ultrawide)</p>
+                  <AspectRatio ratio={21 / 9} className="bg-muted border rounded-lg">
+                    <div className="flex items-center justify-center h-full text-sm text-muted-foreground">
+                      21:9 Ultrawide
+                    </div>
+                  </AspectRatio>
+                </div>
+
+                {/* 9:16 - Mobile/Story */}
+                <div className="space-y-2">
+                  <p className="text-xs font-medium text-muted-foreground">9:16 (Mobile/Story)</p>
+                  <AspectRatio ratio={9 / 16} className="bg-muted border rounded-lg">
+                    <div className="flex items-center justify-center h-full text-sm text-muted-foreground">
+                      9:16 Mobile
+                    </div>
+                  </AspectRatio>
+                </div>
+              </div>
+
+              {/* Example with image content */}
+              <div className="mt-6 space-y-2">
+                <p className="text-sm font-medium">With image content:</p>
+                <div className="max-w-md">
+                  <AspectRatio ratio={16 / 9} className="bg-muted border rounded-lg overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+                      alt="Photo by Drew Beamer"
+                      className="w-full h-full object-cover"
+                    />
+                  </AspectRatio>
+                </div>
               </div>
             </div>
 
@@ -676,7 +782,7 @@ export default function DemoPage() {
                     </h4>
                     <CollapsibleTrigger asChild>
                       <Button variant="ghost" size="sm" className="w-9 p-0">
-                        <ChevronDown className="h-4 w-4" />
+                        <ChevronsUpDown className="h-4 w-4" />
                       </Button>
                     </CollapsibleTrigger>
                   </div>
@@ -773,14 +879,31 @@ export default function DemoPage() {
             <div className="space-y-2">
               <h3 className="text-lg font-semibold">Toaster (Sonner)</h3>
               <p className="text-sm text-muted-foreground mb-4">Toast notifications</p>
-              <Button 
-                onClick={() => {
-                  // This would trigger a toast notification in a real app
-                  alert("In a real app, this would show a toast notification!")
-                }}
-              >
-                Show Toast
-              </Button>
+              <div className="flex flex-wrap gap-2">
+                <Button 
+                  onClick={() => toast("Hello! This is a toast notification.")}
+                >
+                  Show Toast
+                </Button>
+                <Button 
+                  variant="outline"
+                  onClick={() => toast.success("Success! Operation completed.")}
+                >
+                  Success Toast
+                </Button>
+                <Button 
+                  variant="destructive"
+                  onClick={() => toast.error("Error! Something went wrong.")}
+                >
+                  Error Toast
+                </Button>
+                <Button 
+                  variant="secondary"
+                  onClick={() => toast.info("Info: Here's some helpful information.")}
+                >
+                  Info Toast
+                </Button>
+              </div>
               <Toaster />
             </div>
           </section>
@@ -1138,8 +1261,8 @@ export default function DemoPage() {
             {/* Chart */}
             <div className="space-y-2">
               <h3 className="text-lg font-semibold">Chart</h3>
-              <p className="text-sm text-muted-foreground mb-4">Data visualization charts</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+              <p className="text-sm text-muted-foreground mb-4">Data visualization charts with tooltips</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl">
                 {/* Bar Chart */}
                 <Card>
                   <CardHeader>
@@ -1150,11 +1273,31 @@ export default function DemoPage() {
                     <ChartContainer config={chartConfig} className="h-[200px]">
                       <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={chartData}>
-                          <Bar dataKey="desktop" fill="var(--color-desktop)" />
-                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="month" />
+                          <YAxis />
+                          <Bar 
+                            dataKey="desktop" 
+                            fill="var(--color-desktop)"
+                            isAnimationActive={false}
+                          />
+                          <ChartTooltip 
+                            content={<ChartTooltipContent />}
+                            cursor={false}
+                          />
                         </BarChart>
                       </ResponsiveContainer>
                     </ChartContainer>
+                    <style jsx>{`
+                      :global(.recharts-bar-rectangle:hover) {
+                        fill: var(--color-desktop) !important;
+                        opacity: 1 !important;
+                      }
+                      :global(.recharts-active-bar) {
+                        fill: var(--color-desktop) !important;
+                        opacity: 1 !important;
+                      }
+                    `}</style>
                   </CardContent>
                 </Card>
 
@@ -1168,14 +1311,152 @@ export default function DemoPage() {
                     <ChartContainer config={chartConfig} className="h-[200px]">
                       <ResponsiveContainer width="100%" height="100%">
                         <LineChart data={chartData}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="month" />
+                          <YAxis />
                           <Line 
                             type="monotone" 
                             dataKey="desktop" 
                             stroke="var(--color-desktop)" 
                             strokeWidth={2}
+                            dot={{ fill: "var(--color-desktop)" }}
                           />
                           <ChartTooltip content={<ChartTooltipContent />} />
                         </LineChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </CardContent>
+                </Card>
+
+                {/* Area Chart */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Area Chart</CardTitle>
+                    <CardDescription>Desktop vs Mobile usage</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ChartContainer config={chartConfig} className="h-[200px]">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart data={chartData}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="month" />
+                          <YAxis />
+                          <Area 
+                            type="monotone" 
+                            dataKey="desktop" 
+                            stackId="1"
+                            stroke="var(--color-desktop)" 
+                            fill="var(--color-desktop)"
+                            fillOpacity={0.6}
+                          />
+                          <Area 
+                            type="monotone" 
+                            dataKey="mobile" 
+                            stackId="1"
+                            stroke="var(--color-mobile)" 
+                            fill="var(--color-mobile)"
+                            fillOpacity={0.6}
+                          />
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                        </AreaChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </CardContent>
+                </Card>
+
+                {/* Pie Chart */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Pie Chart</CardTitle>
+                    <CardDescription>Device usage breakdown</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ChartContainer config={chartConfig} className="h-[200px]">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Pie
+                            data={pieData}
+                            cx="50%"
+                            cy="50%"
+                            labelLine={false}
+                            label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                            outerRadius={80}
+                            fill="#8884d8"
+                            dataKey="value"
+                          >
+                            {pieData.map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={entry.fill} />
+                            ))}
+                          </Pie>
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </CardContent>
+                </Card>
+
+                {/* Radar Chart */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Radar Chart</CardTitle>
+                    <CardDescription>Student performance comparison</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ChartContainer config={chartConfig} className="h-[200px]">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <RadarChart data={radarData}>
+                          <PolarGrid />
+                          <PolarAngleAxis dataKey="subject" />
+                          <PolarRadiusAxis />
+                          <Radar
+                            name="Student A"
+                            dataKey="A"
+                            stroke="var(--color-A)"
+                            fill="var(--color-A)"
+                            fillOpacity={0.6}
+                          />
+                          <Radar
+                            name="Student B"
+                            dataKey="B"
+                            stroke="var(--color-B)"
+                            fill="var(--color-B)"
+                            fillOpacity={0.6}
+                          />
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                        </RadarChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </CardContent>
+                </Card>
+
+                {/* Radial Bar Chart */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Radial Chart</CardTitle>
+                    <CardDescription>Age group distribution</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ChartContainer config={chartConfig} className="h-[200px]">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <RadialBarChart
+                          cx="50%"
+                          cy="50%"
+                          innerRadius="10%"
+                          outerRadius="80%"
+                          data={radialData}
+                        >
+                          <RadialBar
+                            minAngle={15}
+                            label={{ position: "insideStart", fill: "#fff" }}
+                            background
+                            clockWise
+                            dataKey="value"
+                          />
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                        </RadialBarChart>
                       </ResponsiveContainer>
                     </ChartContainer>
                   </CardContent>
